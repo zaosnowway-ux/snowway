@@ -170,7 +170,7 @@
                 </h2>
                 
                 <div class="space-y-4">
-                    <!-- 緊急聯絡電話 -->
+                    <!-- 緊急聯絡電話 - 已修復 tel 連結移除橫線 -->
                     <div class="bg-white p-4 rounded-2xl shadow-sm border-l-4 border-red-600 flex justify-between items-center">
                         <div>
                             <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">救援中心電話</p>
@@ -348,7 +348,9 @@
             const orderResult = ref(null)
             const loading = ref(false)
             const showAdminPanel = ref(false)
-            const gasUrl = ref(localStorage.getItem('snowway_gas_url') || '')
+            
+            // 已更新預設網址
+            const gasUrl = ref(localStorage.getItem('snowway_gas_url') || 'https://script.google.com/macros/s/AKfycbzuviGWQUnYjANX9ZqlgB3TPiGnvQq3tffhoG_tdbWsbf3OOTCGWe1m7c1OB3evNe8/exec')
 
             const navItems = [
                 { id: 'home', label: '首頁', icon: '🏠' },

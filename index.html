@@ -61,6 +61,8 @@
             text-decoration: line-through;
             opacity: 0.5;
         }
+        /* 避免 iOS 輸入框縮放影響佈局 */
+        input { font-size: 16px !important; }
     </style>
 </head>
 <body>
@@ -85,15 +87,15 @@
         <!-- Tab 1: 首頁 & 查詢 -->
         <div v-if="activeTab === 'home'" class="space-y-6 animate-fade-in">
             
-            <!-- 課程查詢 -->
+            <!-- 課程查詢 - 修復手機版佈局位移 -->
             <section class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-50">
                 <h2 class="text-hokkaido-blue font-bold mb-4 flex items-center text-lg">
                     <span class="w-1.5 h-6 bg-hokkaido-blue mr-2 rounded-full"></span>
                     課程預約查詢
                 </h2>
-                <div class="flex gap-2 mb-4">
-                    <input v-model="orderId" @keyup.enter="searchOrder" type="text" placeholder="輸入課程編號" class="flex-1 bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-2 focus:ring-hokkaido-blue outline-none transition-all">
-                    <button @click="searchOrder" :disabled="loading" class="bg-snow-accent text-white px-6 rounded-2xl font-bold shadow-md active:scale-95 transition-all disabled:opacity-50">
+                <div class="flex flex-nowrap gap-2 mb-4">
+                    <input v-model="orderId" @keyup.enter="searchOrder" type="text" placeholder="輸入課程編號" class="flex-1 min-w-0 bg-slate-50 border-none rounded-2xl p-4 text-sm focus:ring-2 focus:ring-hokkaido-blue outline-none transition-all">
+                    <button @click="searchOrder" :disabled="loading" class="whitespace-nowrap bg-snow-accent text-white px-5 rounded-2xl font-bold shadow-md active:scale-95 transition-all disabled:opacity-50">
                         {{ loading ? '...' : '查詢' }}
                     </button>
                 </div>
@@ -161,7 +163,7 @@
                 雪場與設施資訊
             </h2>
 
-            <!-- 緊急事故應對指南 (移至頂部) -->
+            <!-- 緊急事故應對指南 -->
             <section class="bg-red-50 p-6 rounded-[2.5rem] shadow-sm border border-red-100">
                 <h2 class="text-red-700 font-bold mb-3 flex items-center text-lg">
                     <span class="mr-2">🚨</span> 緊急事故應對指南
@@ -270,7 +272,7 @@
 
         <!-- Tab 3: 上課通知 -->
         <div v-if="activeTab === 'rules'" class="space-y-6 animate-fade-in">
-            <h2 class="text-xl font-bold text-hokkaido-blue flex items-center">
+            <h2 class="text-xl font-bold text-hokkaido-blue flex items-center px-1">
                 <span class="w-1.5 h-6 bg-hokkaido-blue mr-2 rounded-full"></span>
                 上課注意事項
             </h2>
@@ -297,7 +299,7 @@
 
         <!-- Tab 4: 清單 -->
         <div v-if="activeTab === 'gear'" class="space-y-6 animate-fade-in">
-            <h2 class="text-xl font-bold text-hokkaido-blue flex items-center">
+            <h2 class="text-xl font-bold text-hokkaido-blue flex items-center px-1">
                 <span class="w-1.5 h-6 bg-hokkaido-blue mr-2 rounded-full"></span>
                 行李檢查清單
             </h2>
